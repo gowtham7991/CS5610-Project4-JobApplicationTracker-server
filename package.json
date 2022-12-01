@@ -1,0 +1,19 @@
+{
+  "name": "cs5610-project4-jobapplicationtracker-server",
+  "version": "1.0.0",
+  "description": "This is a node server for cs5610 project4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gowtham7991/CS5610-Project4-JobApplicationTracker-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gowtham7991/CS5610-Project4-JobApplicationTracker-server/issues"
+  },
+  "homepage": "https://github.com/gowtham7991/CS5610-Project4-JobApplicationTracker-server#readme"
+}
