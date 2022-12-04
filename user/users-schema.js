@@ -9,8 +9,8 @@ const usersSchema = mongoose.Schema({
     profile:{
         linkedInURL: String,
         workExperience: Number,
-        Skills: Array,
-        Image: String,
+        skills: Array,
+        image: String,
     }
 }, {collection: 'users'})
 
