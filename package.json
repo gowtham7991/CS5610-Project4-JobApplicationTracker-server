@@ -1,6 +1,7 @@
 {
   "name": "cs5610-project4-jobapplicationtracker-server",
   "version": "1.0.0",
+  "type": "module",
   "description": "This is a node server for cs5610 project4",
   "main": "index.js",
   "scripts": {
