@@ -9,8 +9,14 @@ const usersSchema = mongoose.Schema({
     profile:{
         linkedInURL: String,
         workExperience: Number,
-        Skills: Array,
-        Image: String,
+        skills: Array,
+        image: String,
+        graduationDate: Date,
+        resume: Buffer,
+        companyName: String,
+        position: String,
+        contactPhone: Number,
+        department: String
     }
 }, {collection: 'users'})
 
