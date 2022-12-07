@@ -24,7 +24,7 @@ const JobsController = (app) => {
         const status = await dao.updateJob(jid, jobUpdates)
         res.send(status)
     }
-    }
+
     const deleteJob   = async (req, res) => {
         const jid = req.params['jid']
         const status = await dao.deleteJob(jid)
