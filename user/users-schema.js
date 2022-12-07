@@ -18,6 +18,6 @@ const usersSchema = mongoose.Schema({
         contactPhone: Number,
         department: String
     }
-}, {collection: 'users'})
+}, {collection: 'Users'})
 
 export default usersSchema
