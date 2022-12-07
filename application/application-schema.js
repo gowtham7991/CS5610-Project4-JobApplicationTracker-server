@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
 
 const applicationSchema = mongoose.Schema({
-    applicationId: Number,
-    applicationTime: Date,
+    applicationTime: {type: Date, default: Date.now},
     user: {type: mongoose.Schema.Types.ObjectId, ref: 'UserModel'},
     job: {type: mongoose.Schema.Types.ObjectId, ref: 'JobModel'},
 }, {collection: 'Application'})

@@ -22,6 +22,13 @@ const UsersController = (app) => {
         res.json(actualUser)
     }
 
+    const updateProfile = async (req, res) => {
+        const id = req.params['id']
+        const profileUpdates = req.body
+        const status = await dao.updateProfile(id, profileUpdates)
+        res.send(status)
+    }
+
     const login = async (req, res) => {
         const credentials = req.body
         const existingUser = await findByCredentials(credentials.email, credentials.password)
@@ -39,6 +46,7 @@ const UsersController = (app) => {
     }
 
     app.get('/getProfile', findAllUsers)
+    app.post('/updateProfile/:id', updateProfile)
     app.post('/register/student', register)
     app.post('/register/recruiter', register)
     app.post('/login', login)

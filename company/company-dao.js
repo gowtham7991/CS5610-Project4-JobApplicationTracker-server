@@ -1,39 +1,22 @@
-import * as dao from './jobs-dao.js'
+import companyModel from "./company-model.js";
 
-const JobsController = (app) => {
+export const createCompany = (company) =>
+    companyModel.create(company)
 
-    const findAllJobs = async (req, res) => {
-        const jobs = await dao.findAllJobs()
-        res.json(jobs)
-    }
+export const findAllCompanies = () =>
+    companyModel.find()
 
-    const createJob = async (req, res) => {
-        const job = req.body
-        const existingJob = await dao.findJobById(job.id)
-        if (existingJob) {
-            res.sendStatus(403)
-            return
-        }
-        const newJob = await dao.createJob(job)
-        res.json(newJob)
-    }
+export const findCompanyByName = (cname) =>
+    companyModel.find({name: cname})
 
-    const updateJob   = async (req, res) => {
-        const jid = req.params['jid']
-        const jobUpdates = req.body
-        const status = await dao.updateJob(jid, jobUpdates)
-        res.send(status)
-    }
-    const deleteJob   = async (req, res) => {
-        const jid = req.params['jid']
-        const status = await dao.deleteJob(jid)
-        res.send(status)
-    }
-
-    app.get('/jobs', findAllJobs)
-    app.post('/jobs', createJob)
-    app.put('/jobs/:jid', updateJob)
-    app.delete('/jobs/:jid', deleteJob)
+export const deleteCompany = async (cid) => {
+    const status = await companyModel.deleteOne({companyId: cid})
+    return status
 }
 
-export default JobsController
+export const updateCompany = async (cid, companyUpdates) => {
+    const status = companyModel.updateOne(
+        {companyId: cid},
+        {$set: companyUpdates})
+    return status
+}

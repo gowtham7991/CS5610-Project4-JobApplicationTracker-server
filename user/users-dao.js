@@ -16,3 +16,10 @@ export const findByCredentials = (email, password) =>
     usersModel.findOne(
         {email, password},
         {password: false})
+
+export const updateProfile = async (userId, profileUpdates) => {
+    const status = usersModel.updateOne(
+        {id: userId},
+        {$set: profileUpdates})
+    return status
+}

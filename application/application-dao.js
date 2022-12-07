@@ -6,4 +6,5 @@ export const findByJobId = (jobId) =>
 export const findByEmail = (email) =>
     applicationModel.find({email})
 
-
+export const createApplication = (application) =>
+    applicationModel.create(application)

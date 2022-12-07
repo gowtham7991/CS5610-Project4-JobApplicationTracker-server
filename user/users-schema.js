@@ -7,16 +7,22 @@ const usersSchema = mongoose.Schema({
     dob: String,
     role: {type: String, enum: ['STUDENT', 'RECRUITER', 'ADMIN']},
     profile:{
+        aboutMe: String,
         linkedInURL: String,
+        githubURL: String,
         workExperience: Number,
         skills: Array,
         image: String,
         graduationDate: String,
-        resume: Buffer,
+        website: String,
         companyName: String,
         position: String,
-        contactPhone: Number,
-        department: String
+        mobileNumber: Number,
+        department: String,
+        address: String,
+        educationLevel: String,
+        major: String,
+        GPA: Number
     }
 }, {collection: 'Users'})
 
