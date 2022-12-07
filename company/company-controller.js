@@ -8,32 +8,32 @@ const CompanyController = (app) => {
     }
 
     const createCompany = async (req, res) => {
-        const job = req.body
-        const existingJob = await dao.findCompanyById(job.id)
-        if (existingJob) {
+        const company = req.body
+        const existingCompany = await dao.findCompanyById(company.companyId)
+        if (existingCompany) {
             res.sendStatus(403)
             return
         }
-        const newJob = await dao.createJob(job)
-        res.json(newJob)
+        const newCompany = await dao.createCompany(company)
+        res.json(newCompany)
     }
 
-    const updateJob   = async (req, res) => {
-        const jid = req.params['jid']
-        const jobUpdates = req.body
-        const status = await dao.updateJob(jid, jobUpdates)
+    const updateCompany   = async (req, res) => {
+        const cid = req.params['cid']
+        const companyUpdates = req.body
+        const status = await dao.updateJob(cid, companyUpdates)
         res.send(status)
     }
-    const deleteJob   = async (req, res) => {
-        const jid = req.params['jid']
-        const status = await dao.deleteJob(jid)
+    const deleteCompany = async (req, res) => {
+        const cid = req.params['cid']
+        const status = await dao.deleteCompany(cid)
         res.send(status)
     }
 
-    app.get('/jobs', findAllJobs)
-    app.post('/jobs', createJob)
-    app.put('/jobs/:jid', updateJob)
-    app.delete('/jobs/:jid', deleteJob)
+    app.get('/companies', findAllCompanies)
+    app.post('/companies', createCompany)
+    app.put('/companies/:cid', updateCompany)
+    app.delete('/companies/:cid', deleteCompany)
 }
 
-export default JobsController
+export default CompanyController
