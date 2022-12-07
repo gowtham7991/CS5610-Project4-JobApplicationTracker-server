@@ -4,20 +4,20 @@ const usersSchema = mongoose.Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     name: {firstName: String, lastName: String},
-    dob: Date,
+    dob: String,
     role: {type: String, enum: ['STUDENT', 'RECRUITER', 'ADMIN']},
     profile:{
         linkedInURL: String,
         workExperience: Number,
         skills: Array,
         image: String,
-        graduationDate: Date,
+        graduationDate: String,
         resume: Buffer,
         companyName: String,
         position: String,
         contactPhone: Number,
         department: String
     }
-}, {collection: 'users'})
+}, {collection: 'Users'},)
 
 export default usersSchema
