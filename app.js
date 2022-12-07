@@ -13,6 +13,7 @@ app.use(cors())
 app.use(express.json())
 
 JobsController(app);
+CompanyController(app);
 UsersController(app);
 ApplicationController(app);
 

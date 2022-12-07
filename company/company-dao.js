@@ -6,13 +6,14 @@ export const createCompany = (company) =>
 export const findAllCompanies = () =>
     companyModel.find()
 
-export const findCompanyById = (cid) =>
-    companyModel.findById(cid)
+export const findCompanyByName = (cname) =>
+    companyModel.find({name: cname})
 
 export const deleteCompany = async (cid) => {
     const status = await companyModel.deleteOne({companyId: cid})
     return status
 }
+
 export const updateCompany = async (cid, companyUpdates) => {
     const status = companyModel.updateOne(
         {companyId: cid},

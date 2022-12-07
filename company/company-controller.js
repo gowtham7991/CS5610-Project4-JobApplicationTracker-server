@@ -9,7 +9,7 @@ const CompanyController = (app) => {
 
     const createCompany = async (req, res) => {
         const company = req.body
-        const existingCompany = await dao.findCompanyById(company.companyId)
+        const existingCompany = await dao.findCompanyByName(company.name)
         if (existingCompany) {
             res.sendStatus(403)
             return
@@ -21,9 +21,10 @@ const CompanyController = (app) => {
     const updateCompany   = async (req, res) => {
         const cid = req.params['cid']
         const companyUpdates = req.body
-        const status = await dao.updateJob(cid, companyUpdates)
+        const status = await dao.updateCompany(cid, companyUpdates)
         res.send(status)
     }
+
     const deleteCompany = async (req, res) => {
         const cid = req.params['cid']
         const status = await dao.deleteCompany(cid)

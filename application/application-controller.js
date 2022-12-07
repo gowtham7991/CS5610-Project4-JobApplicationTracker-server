@@ -1,5 +1,5 @@
 import * as dao from './application-dao.js'
-import {createApplication, findByEmail} from './application-dao.js'";
+import {createApplication, findByEmail} from './application-dao.js';
 
 const ApplicationController = (app) => {
 
