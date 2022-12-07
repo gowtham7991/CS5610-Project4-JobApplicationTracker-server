@@ -1,39 +1,21 @@
-import * as dao from './company-dao.js'
+import companyModel from "./company-model.js";
 
-const CompaniesController = (app) => {
+export const createCompany = (company) =>
+    companyModel.create(company)
 
-    const findAllCompanies = async (req, res) => {
-        const companies = await dao.findAllCompanies()
-        res.json(companies)
-    }
+export const findAllCompanies = () =>
+    companyModel.find()
 
-    const createCompany = async (req, res) => {
-        const company = req.body
-        const existingCompany = await dao.findCompanyById(company.companyId)
-        if (existingCompany) {
-            res.sendStatus(403)
-            return
-        }
-        const newCompany = await dao.createCompany(company)
-        res.json(newCompany)
-    }
+export const findCompanyById = (cid) =>
+    companyModel.findById(cid)
 
-    const updateCompany   = async (req, res) => {
-        const cid = req.params['cid']
-        const companyUpdates = req.body
-        const status = await dao.updateCompany(cid, companyUpdates)
-        res.send(status)
-    }
-    const deleteCompany   = async (req, res) => {
-        const cid = req.params['cid']
-        const status = await dao.deleteCompany(cid)
-        res.send(status)
-    }
-
-    app.get('/companies', findAllCompanies)
-    app.post('/companies', createCompany)
-    app.put('/companies/:cid', updateCompany)
-    app.delete('/companies/:cid', deleteCompany)
+export const deleteCompany = async (cid) => {
+    const status = await companyModel.deleteOne({companyId: cid})
+    return status
 }
-
-export default CompaniesController
+export const updateCompany = async (cid, companyUpdates) => {
+    const status = companyModel.updateOne(
+        {companyId: cid},
+        {$set: companyUpdates})
+    return status
+}

@@ -15,7 +15,7 @@ export const deleteJob = async (jid) => {
 }
 export const updateJob = async (jid, jobUpdates) => {
     const status = jobsModel.updateOne(
-        {_id: jid},
+        {jobId: jid},
         {$set: jobUpdates})
     return status
 }
