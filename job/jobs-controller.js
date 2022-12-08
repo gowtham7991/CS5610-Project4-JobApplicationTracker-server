@@ -14,8 +14,9 @@ const JobsController = (app) => {
     }
 
     const findJobByCompanyId = async (req, res) => {
-        const company = req.params.compId
+        const company = req.params.company
         const jobs = await dao.findJobByCompanyId(company)
+        console.log(jobs)
         res.json(jobs)
     }
 
@@ -45,7 +46,7 @@ const JobsController = (app) => {
 
     app.get('/jobs', findAllJobs)
     app.get('/postings', findAllJobs)
-    app.get('/postings/:compId', findJobByCompanyId)
+    app.get('/postings/:company', findJobByCompanyId)
     app.get('/jobs/:id', findJobById)
     app.post('/jobs', createJob)
     app.put('/jobs/:jid', updateJob)

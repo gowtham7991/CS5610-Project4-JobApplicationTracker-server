@@ -11,13 +11,10 @@ export const findJobById = (jid) =>
     jobsModel.findById(jid)
 
 export const findJobByCompanyId = (company) => {
-    //const cId = new mongoose.Types.ObjectId(compId);
-    jobsModel.find({company : new mongoose.Types.ObjectId("638e4bd226e6c63db2462c1e")})
-    // jobsModel.find({
-    //     filter: {
-    //         company: {$eq: { $oid: "6390e9ea55fdee251cfc89c8" } }
-    //     }
-    // })
+    const cId = new mongoose.Types.ObjectId(company);
+    // mongoose.Types.ObjectId("6390e9ea55fdee251cfc89c8")
+    console.log(cId);
+    return jobsModel.find({company : "6390e9ea55fdee251cfc89c8"})
 }
 
 export const deleteJob = async (jid) => {

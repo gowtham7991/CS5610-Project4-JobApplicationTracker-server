@@ -7,7 +7,9 @@ const jobsSchema = mongoose.Schema({
     numOpenings: Number,
     dateOfPosting: Date,
     deadlineToApply: Date,
-    company: {type: String},
+    company: {
+         type: String,
+         ref: 'CompanyModel' },
     skillsReqd: Array,
     jobLength: Number,
     pay: Number,
