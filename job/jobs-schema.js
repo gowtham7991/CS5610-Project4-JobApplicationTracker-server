@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const jobsSchema = mongoose.Schema({
-    jobId: {type: String, required: true, unique: true},
+    //jobId: {type: String, required: true, unique: true},
     positionName: {type: String},
     positionType: {type: String, enum: ['Coop', 'Internship', 'Full Time']},
     numOpenings: Number,

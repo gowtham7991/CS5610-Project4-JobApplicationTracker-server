@@ -16,7 +16,6 @@ const decodeAPIParams = searchParams => Array
 
 const apiServer = http.createServer((req, res) => {
     const requestURL = url.parse(req.url);
-    // { search : <search_term>, location: <location> }
     const decodedParams = decodeAPIParams(new URLSearchParams(requestURL.search));
     const {search, location, country = 'us', sort_by = 'date'} = decodedParams;
     let api_string = `${config.BASE_URL}/${country.toLowerCase()}/${config.BASE_PARAMS}&app_id=${config.APP_ID}&app_key=${config.API_KEY}&sort_by=${sort_by}`;

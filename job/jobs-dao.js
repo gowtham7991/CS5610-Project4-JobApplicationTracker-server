@@ -11,10 +11,7 @@ export const findJobById = (jid) =>
     jobsModel.findById(jid)
 
 export const findJobByCompanyId = (company) => {
-    const cId = new mongoose.Types.ObjectId(company);
-    // mongoose.Types.ObjectId("6390e9ea55fdee251cfc89c8")
-    console.log(cId);
-    return jobsModel.find({company : "6390e9ea55fdee251cfc89c8"})
+    return jobsModel.find({company : company})
 }
 
 export const deleteJob = async (jid) => {
