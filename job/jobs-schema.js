@@ -7,9 +7,7 @@ const jobsSchema = mongoose.Schema({
     numOpenings: Number,
     dateOfPosting: Date,
     deadlineToApply: Date,
-    company: {
-         type: mongoose.Schema.Types.ObjectId,
-         ref: 'company' },
+    company: {type: String},
     skillsReqd: Array,
     jobLength: Number,
     pay: Number,

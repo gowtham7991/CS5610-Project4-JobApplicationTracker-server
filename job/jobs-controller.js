@@ -13,6 +13,12 @@ const JobsController = (app) => {
         res.json(jobs)
     }
 
+    const findJobByCompanyId = async (req, res) => {
+        const company = req.params.compId
+        const jobs = await dao.findJobByCompanyId(company)
+        res.json(jobs)
+    }
+
     const createJob = async (req, res) => {
         const job = req.body
         const existingJob = await dao.findJobById(job.id)
@@ -38,6 +44,8 @@ const JobsController = (app) => {
     }
 
     app.get('/jobs', findAllJobs)
+    app.get('/postings', findAllJobs)
+    app.get('/postings/:compId', findJobByCompanyId)
     app.get('/jobs/:id', findJobById)
     app.post('/jobs', createJob)
     app.put('/jobs/:jid', updateJob)
