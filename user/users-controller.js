@@ -39,7 +39,7 @@ const UsersController = (app) => {
         const credentials = req.body
         const existingUser = await findByCredentials(credentials.email, credentials.password)
         if (!existingUser) {
-            res.sendStatus(403)
+            res.sendStatus(400)
             return
         }
         currentUser = existingUser
