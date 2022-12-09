@@ -45,12 +45,13 @@ const JobsController = (app) => {
     }
 
     app.get('/jobs', findAllJobs)
-    app.get('/postings', findAllJobs)
-    app.get('/postings/:company', findJobByCompanyId)
     app.get('/jobs/:jid', findJobById)
-    app.post('/jobs', createJob)
-    app.put('/jobs/:jid', updateJob)
+    app.post('/jobs/create', createJob)
     app.delete('/jobs/:jid', deleteJob)
+    app.get('/postings', findAllJobs)
+    app.get('/postings/company/:company', findJobByCompanyId)
+    app.put('/jobs/:jid', updateJob)
+
 }
 
 export default JobsController
