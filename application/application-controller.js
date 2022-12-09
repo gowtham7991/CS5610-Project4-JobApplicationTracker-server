@@ -35,6 +35,7 @@ const ApplicationController = (app) => {
 
 
     app.get('/applications/', findAllApplications)
+    //app.post('/applications/', findAllApplications)
     app.get('/applications/:uid', findApplicationByUserId)
     app.get('/applications/jobs/:jid', findApplicationByJobId)
     app.get('/student/getApplications', findAllApplications)

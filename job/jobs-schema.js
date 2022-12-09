@@ -11,6 +11,7 @@ const jobsSchema = mongoose.Schema({
          ref: 'CompanyModel' },
     skillsReqd: Array,
     jobLength: Number,
+    applicants: Array,
     pay: Number,
 }, {collection: 'Jobs'})
 

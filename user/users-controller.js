@@ -53,7 +53,7 @@ const UsersController = (app) => {
 
     app.get('/profile', findAllUsers)
     app.get('/profile/:id', findUserById)
-    app.post('/profile/:id', updateProfile)
+    app.put('/profile/:id', updateProfile)
     app.post('/register/student', register)
     app.post('/register/recruiter', register)
     app.post('/login', login)
