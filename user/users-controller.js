@@ -16,9 +16,9 @@ const UsersController = (app) => {
         res.json(users)
     }
 
-    const register = async (req, res) => {
-        console.log(req);
+    const registerAsStudent = async (req, res) => {
         const user = req.body
+        user.role = 'STUDENT'
         const existingUser = await findByEmail(user.email)
         if (existingUser) {
             res.sendStatus(403)
@@ -28,6 +28,21 @@ const UsersController = (app) => {
         currentUser = actualUser
         res.json(actualUser)
     }
+
+    const registerAsRecruiter = async (req, res) => {
+        const user = req.body
+        user.role = 'RECRUITER'
+        const existingUser = await findByEmail(user.email)
+        if (existingUser) {
+            res.sendStatus(403)
+            return
+        }
+        const actualUser = await dao.createUser(user)
+        currentUser = actualUser
+        res.json(actualUser)
+    }
+
+
 
     const updateProfile = async (req, res) => {
         const id = req.params['id']
@@ -55,8 +70,8 @@ const UsersController = (app) => {
     app.get('/profile', findAllUsers)
     app.get('/profile/:id', findUserById)
     app.put('/profile/:id', updateProfile)
-    app.post('/register/student', register)
-    app.post('/register/recruiter', register)
+    app.post('/register/student', registerAsStudent)
+    app.post('/register/recruiter', registerAsRecruiter)
     app.post('/login', login)
     app.post('/logout', logout)
 }
