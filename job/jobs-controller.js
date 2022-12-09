@@ -47,7 +47,7 @@ const JobsController = (app) => {
     app.get('/jobs', findAllJobs)
     app.get('/postings', findAllJobs)
     app.get('/postings/:company', findJobByCompanyId)
-    app.get('/jobs/:id', findJobById)
+    app.get('/jobs/:jid', findJobById)
     app.post('/jobs', createJob)
     app.put('/jobs/:jid', updateJob)
     app.delete('/jobs/:jid', deleteJob)
