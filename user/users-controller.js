@@ -17,6 +17,7 @@ const UsersController = (app) => {
     }
 
     const register = async (req, res) => {
+        console.log(req);
         const user = req.body
         const existingUser = await findByEmail(user.email)
         if (existingUser) {
