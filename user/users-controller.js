@@ -23,7 +23,7 @@ const UsersController = (app) => {
             res.sendStatus(403)
             return
         }
-        const actualUser = await dao.createUser(user).catch(res.sendStatus(400))
+        const actualUser = await dao.createUser(user)
         currentUser = actualUser
         res.json(actualUser)
     }
