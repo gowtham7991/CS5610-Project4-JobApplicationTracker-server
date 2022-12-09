@@ -17,12 +17,12 @@ const usersSchema = mongoose.Schema({
         website: String,
         companyName: String,
         position: String,
-        mobileNumber: Number,
+        mobileNumber: String,
         department: String,
         address: String,
         educationLevel: String,
         major: String,
-        GPA: Number
+        GPA: String
     }
 }, {collection: 'Users'})
 

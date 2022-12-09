@@ -16,6 +16,7 @@ const jobsSchema = mongoose.Schema({
     skillsReqd: Array,
     startDate: Date,
     jobLength: Number,
+    applicants: Array,
     pay: Number,
     applicationDeadline: Date
 }, {collection: 'Jobs'})
