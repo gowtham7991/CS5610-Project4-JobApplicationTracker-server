@@ -54,12 +54,14 @@ const JobsController = (app) => {
         'Access-Control-Allow-Methods': 'GET'
     };
 
-    const findExternalJobs = (req, res) => {
-        const search = req.params['keyword']
-        const location = req.params['location']
-        const country = req.params['country']
-        const sort_by = req.params['sort_by']
+    const decodeAPIParams = searchParams => Array
+        .from(searchParams.keys())
+        .reduce((acc, key) => ({...acc, [key]: searchParams.get(key)}), {});
 
+    const findExternalJobs = (req, res) => {
+        const requestURL = url.parse(req.url);
+        const decodedParams = decodeAPIParams(new URLSearchParams(requestURL.search));
+        const {search, location, country = 'us', sort_by = 'date'} = decodedParams;
         let api_string = `${config.BASE_URL}/${country.toLowerCase()}/${config.BASE_PARAMS}&app_id=${config.APP_ID}&app_key=${config.API_KEY}&sort_by=${sort_by}`;
         if (search != null) {
             api_string += `&what=${search}`;
@@ -84,7 +86,7 @@ const JobsController = (app) => {
     };
 
     app.get('/jobs', findAllJobs)
-    app.get('/jobs/external/:keyword/:location/:country/:sort_by', findExternalJobs)
+    app.get('/jobs/external/', findExternalJobs)
     app.get('/jobs/:jid', findJobById)
     app.post('/jobs/create', createJob)
     app.delete('/jobs/:jid', deleteJob)
