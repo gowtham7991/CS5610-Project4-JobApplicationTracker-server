@@ -86,7 +86,7 @@ const JobsController = (app) => {
     };
 
     app.get('/jobs', findAllJobs)
-    app.get('/jobs/external', findExternalJobs)
+    app.get(`/jobs/external/?search=${keyword}&location=${location}&country=${country}&sort_by=${sort_by}`, findExternalJobs)
     app.get('/jobs/:jid', findJobById)
     app.post('/jobs/create', createJob)
     app.delete('/jobs/:jid', deleteJob)
