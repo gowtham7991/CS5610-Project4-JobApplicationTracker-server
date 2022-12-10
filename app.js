@@ -18,7 +18,6 @@ CompanyController(app);
 UsersController(app);
 ApplicationController(app);
 
-app.listen(4000, () => {
+app.listen(4000 || process.env.PORT, () => {
     console.log(chalk.green('Server listening on port 4000'));
 })
-

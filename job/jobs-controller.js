@@ -1,5 +1,4 @@
 import * as dao from './jobs-dao.js'
-import http from "http";
 import url from "url";
 import config from "../job_search_api/config.js";
 import axios from "axios";
