@@ -23,3 +23,7 @@ app.listen(4000, () => {
     console.log(chalk.green('Server listening on port 4000'));
 })
 
+APIServer.listen(3000, () => {
+    console.log(chalk.green('Server listening on port 3000'));
+} )
+
