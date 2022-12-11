@@ -9,10 +9,10 @@ const jobsSchema = mongoose.Schema({
     location: String,
     paymentType: String,
     dateOfPosting: {type: Date, default: Date.now},
-    deadlineToApply: Date,
+    deadlineToApply: String,
     company: String,
     skillsReqd: Array,
-    startDate: Date,
+    startDate: String,
     jobLength: Number,
     applicants: Array,
     pay: Number
