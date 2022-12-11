@@ -5,7 +5,6 @@ import JobsController from "./job/jobs-controller.js"
 import CompanyController from "./company/company-controller.js"
 import UsersController from "./user/users-controller.js";
 import ApplicationController from "./application/application-controller.js";
-import APIServer from "./job_search_api/index.js"
 import chalk from "chalk"
 
 mongoose.connect('mongodb+srv://riiyabatra:Riya%403579@cluster0.qziefsc.mongodb.net/?retryWrites=true&w=majority');
@@ -19,7 +18,6 @@ CompanyController(app);
 UsersController(app);
 ApplicationController(app);
 
-app.listen(4000, () => {
+app.listen(4000 || process.env.PORT, () => {
     console.log(chalk.green('Server listening on port 4000'));
 })
-
