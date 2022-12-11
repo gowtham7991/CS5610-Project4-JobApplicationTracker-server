@@ -1,11 +1,11 @@
 import * as dao from './application-dao.js'
 import {createApplication, findByEmail} from './application-dao.js';
+import * as jobsDao from '../job/jobs-dao.js'
 
 const ApplicationController = (app) => {
 
     const findAllApplications = async (req, res) => {
-        const user = req.body
-        const applications = await dao.findByEmail(user.email)
+        const applications = await dao.findAllApplications()
         res.json(applications)
     }
 
@@ -35,7 +35,6 @@ const ApplicationController = (app) => {
 
 
     app.get('/applications/', findAllApplications)
-    //app.post('/applications/', findAllApplications)
     app.get('/applications/:uid', findApplicationByUserId)
     app.get('/applications/jobs/:jid', findApplicationByJobId)
     app.get('/student/getApplications', findAllApplications)

@@ -7,8 +7,9 @@ export const createJob = (job) =>
 export const findAllJobs = () =>
     jobsModel.find()
 
-export const findJobById = (jid) =>
-    jobsModel.findById(jid)
+export const findJobById = (jid) => {
+    return jobsModel.findById(jid)
+}
 
 export const findJobByCompanyId = (company) => {
     return jobsModel.find({company : company})
