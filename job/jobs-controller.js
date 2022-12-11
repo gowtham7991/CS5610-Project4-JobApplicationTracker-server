@@ -16,7 +16,6 @@ const JobsController = (app) => {
     const findJobByCompanyId = async (req, res) => {
         const company = req.params.company
         const jobs = await dao.findJobByCompanyId(company)
-        console.log(jobs)
         res.json(jobs)
     }
 

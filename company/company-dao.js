@@ -9,6 +9,9 @@ export const findAllCompanies = () =>
 export const findCompanyByName = (cname) =>
     companyModel.find({name: cname})
 
+export const findCompanyById = (cid) =>
+    companyModel.findById(cid)
+
 export const deleteCompany = async (cid) => {
     const status = await companyModel.deleteOne({companyId: cid})
     return status

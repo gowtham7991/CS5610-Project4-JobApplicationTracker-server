@@ -40,7 +40,7 @@ const ApplicationController = (app) => {
     app.get('/applications/jobs/:jid', findApplicationByJobId)
     app.get('/student/getApplications', findAllApplications)
     app.get('/recruiter/getApplications', findAllJobApplications)
-    app.post('/addApplication', addApplication)
+    app.post('/applications', addApplication)
 }
 
 export default ApplicationController

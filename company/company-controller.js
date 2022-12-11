@@ -18,11 +18,17 @@ const CompanyController = (app) => {
         res.json(newCompany)
     }
 
-    const updateCompany   = async (req, res) => {
+    const updateCompany = async (req, res) => {
         const cid = req.params['cid']
         const companyUpdates = req.body
         const status = await dao.updateCompany(cid, companyUpdates)
         res.send(status)
+    }
+
+    const findCompanyById = async (req, res) => {
+        const cid = req.params['cid']
+        const company = await dao.findCompanyById(cid)
+        res.send(company)
     }
 
     const deleteCompany = async (req, res) => {
@@ -32,6 +38,7 @@ const CompanyController = (app) => {
     }
 
     app.get('/companies', findAllCompanies)
+    app.get('/companies/:cid', findCompanyById)
     app.post('/companies', createCompany)
     app.put('/companies/:cid', updateCompany)
     app.delete('/companies/:cid', deleteCompany)
