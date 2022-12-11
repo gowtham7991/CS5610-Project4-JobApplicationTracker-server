@@ -7,8 +7,14 @@ import chalk from "chalk";
 const JobsController = (app) => {
 
     const findAllJobs = async (req, res) => {
-        const jobs = await dao.findAllJobs()
-        res.json(jobs)
+        console.log(req.query)
+        if (req.query === undefined) {
+            const jobs = await dao.findAllJobs()
+            res.json(jobs)
+        } else {
+            const jobs = await dao.findJobUsingFilters(req.query)
+            res.json(jobs)
+        }
     }
 
     const findJobById = async (req, res) => {

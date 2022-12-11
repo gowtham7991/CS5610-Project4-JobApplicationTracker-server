@@ -4,21 +4,18 @@ const jobsSchema = mongoose.Schema({
     positionName: {type: String},
     description: String,
     term: String,
-    positionType: {type: String, enum: ['Coop', 'Internship', 'Full Time']},
+    positionType: {type: String, enum: ['Coop', 'Internship', 'FullTime']},
     numOpenings: Number,
     location: String,
     paymentType: String,
-    dateOfPosting: Date,
+    dateOfPosting: {type: Date, default: Date.now},
     deadlineToApply: Date,
-    company: {
-         type: String,
-         ref: 'CompanyModel' },
+    company: String,
     skillsReqd: Array,
     startDate: Date,
     jobLength: Number,
     applicants: Array,
-    pay: Number,
-    applicationDeadline: Date
+    pay: Number
 }, {collection: 'Jobs'})
 
 export default jobsSchema
