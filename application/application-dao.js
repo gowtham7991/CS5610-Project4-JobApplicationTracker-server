@@ -18,8 +18,10 @@ export const findAllApplications = () => {
     return applicationModel.find().populate('job').populate('user')
 }
 
-export const createApplication = (application) =>
+export const createApplication = (application) => {
     applicationModel.create(application)
+    return applicationModel.find(application).populate('job').populate('user')
+}
 
 export const withdrawApplication = async (id) => {
     const status = await applicationModel.deleteOne({ _id: id})
