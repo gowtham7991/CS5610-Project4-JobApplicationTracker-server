@@ -20,3 +20,8 @@ export const findAllApplications = () => {
 
 export const createApplication = (application) =>
     applicationModel.create(application)
+
+export const withdrawApplication = async (id) => {
+    const status = await applicationModel.deleteOne({ _id: id})
+    return status
+}

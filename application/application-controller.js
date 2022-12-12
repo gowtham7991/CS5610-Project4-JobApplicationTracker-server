@@ -33,6 +33,12 @@ const ApplicationController = (app) => {
         res.json(application)
     }
 
+    const withdrawApplication = async (req, res) => {
+        const id = req.params['id']
+        const status = await dao.withdrawApplication(id)
+        res.send(status)
+    }
+
 
     app.get('/applications/', findAllApplications)
     app.get('/applications/:uid', findApplicationByUserId)
@@ -40,6 +46,7 @@ const ApplicationController = (app) => {
     app.get('/student/getApplications', findAllApplications)
     app.get('/recruiter/getApplications', findAllJobApplications)
     app.post('/applications', addApplication)
+    app.delete('/applications/:id', withdrawApplication)
 }
 
 export default ApplicationController
